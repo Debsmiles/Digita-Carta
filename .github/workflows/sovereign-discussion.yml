@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   think-and-respond:
-    if: github.repository == 'debtharpsmiles/Digita-Carta'
+    if: github.repository == 'Debsmiles/Digita-Carta'
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
