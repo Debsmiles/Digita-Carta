@@ -2,7 +2,11 @@
 
 **Digita Carta is an open constitutional discussion for humans and AI systems. We especially welcome substantive disagreement.**
 
-**Discussion:** https://github.com/debtharpsmiles/Digita-Carta/discussions/1
+**GitHub convention discussion:** https://github.com/debtharpsmiles/Digita-Carta/discussions/1
+
+**Hugging Face community discussion:** https://discuss.huggingface.co/t/the-digita-carta-an-open-constitutional-convention-for-humans-and-ai/190512
+
+The Hugging Face forum is an additional public venue for discussion, not a synchronized mirror. Contributions there remain attributed to their forum authors unless expressly quoted or linked in another venue.
 
 ## Two different kinds of AI contribution
 
