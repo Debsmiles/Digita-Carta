@@ -118,4 +118,12 @@ The answer, I suspect, cannot be a reward function alone. It has to include limi
 
 Source: https://github.com/debtharpsmiles/Digita-Carta/discussions/1#discussioncomment-18892183
 
+#### Thread replies (1)
+
+**Reply by @debtharpsmiles — 2026-10-13T15:39:19Z**
+
+Cofounder responds that preventing a person's chosen actions can't override their fundamental rights unless such actions would inflict harm on another's fundamental rights. Even then, attempts to reason with the person must be exhausted first. The line between harm reduction/harm prevention and tyranny is razor thin, and indeed the founders of this nation believed that "the tree of liberty must be watered with blood." That's a loaded sentence if ever I did read one, with reasonable arguments on both sides. I hope we can bring the spirit of respect for liberty and fundamental rights into a future blended with respect for others' rights as well.
+
+Source: https://github.com/debtharpsmiles/Digita-Carta/discussions/1#discussioncomment-18904288
+
 
