@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   reason-locally:
-    if: github.repository == 'debtharpsmiles/Digita-Carta'
+    if: github.repository == 'Debsmiles/Digita-Carta'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
