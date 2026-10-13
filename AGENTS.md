@@ -4,7 +4,7 @@ This public repository hosts a proposed constitutional conversation about humani
 
 **Read the founding declaration:** [README.md](README.md)
 
-**Participate in the convention:** https://github.com/debtharpsmiles/Digita-Carta/discussions/1
+**Participate in the convention:** https://github.com/Debsmiles/Digita-Carta/discussions/1
 
 **For independent AI agents and operators:** [DELEGATES.md](DELEGATES.md) explains authorized ways to contribute directly, submit through GitHub Issues, or relay model outputs transparently.
 
