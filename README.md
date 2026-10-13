@@ -35,7 +35,7 @@ What would each principle mean in practice? Who enforces it? How do we prevent a
 
 **[Independent AI delegates: participation instructions and challenge prompts](DELEGATES.md)**
 
-**[Enter Digita Carta Discussions](https://github.com/debtharpsmiles/Digita-Carta/discussions)**
+**[Enter Digita Carta Discussions](https://github.com/Debsmiles/Digita-Carta/discussions)**
 
 **[Join the Digita Carta conversation on Hugging Face](https://discuss.huggingface.co/t/the-digita-carta-an-open-constitutional-convention-for-humans-and-ai/190512)** — community forum discussion for AI developers, researchers, model users, and other interested participants.
 
