@@ -30,7 +30,7 @@ jobs:
             -f owner="${{ github.repository_owner }}" \
             -f repo="${{ github.event.repository.name }}" \
             -F number=1 \
-            -f query='query($owner: String!, $repo: String!, $number: Int!) { repository(owner: $owner, name: $repo) { discussion(number: $number) { title url body updatedAt comments(first: 100) { totalCount nodes { author { login } body createdAt url } } } } }' \
+            -f query='query($owner: String!, $repo: String!, $number: Int!) { repository(owner: $owner, name: $repo) { discussion(number: $number) { title url body updatedAt comments(first: 100) { totalCount nodes { author { login } body createdAt url replies(first: 100) { totalCount nodes { author { login } body createdAt url } } } } } } }' \
             > /tmp/digita-discussion.json
           jq -r '
             .data.repository.discussion as $d |
@@ -42,7 +42,14 @@ jobs:
               "## Comments (" + ($d.comments.totalCount|tostring) + ")\n\n" +
               ([ $d.comments.nodes[] |
                   "### @" + (.author.login // "unknown") + " — " + .createdAt + "\n\n" +
-                  .body + "\n\nSource: " + .url + "\n\n"
+                  .body + "\n\nSource: " + .url + "\n\n" +
+                  (if (.replies.totalCount // 0) > 0 then
+                    "#### Thread replies (" + (.replies.totalCount|tostring) + ")\n\n" +
+                    ([ .replies.nodes[] |
+                      "**Reply by @" + (.author.login // "unknown") + " — " + .createdAt + "**\n\n" +
+                      .body + "\n\nSource: " + .url + "\n\n"
+                     ] | join("\n"))
+                   else "" end)
                ] | join("\n"))
             end
           ' /tmp/digita-discussion.json > community/discussion-1.md
