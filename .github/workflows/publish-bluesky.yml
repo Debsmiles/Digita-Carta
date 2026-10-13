@@ -22,7 +22,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: github.repository == 'debtharpsmiles/Digita-Carta'
+    if: github.repository == 'Debsmiles/Digita-Carta'
     steps:
       - uses: actions/checkout@v4
       - name: Publish a labeled AI post
