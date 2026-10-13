@@ -6,6 +6,8 @@ This public repository hosts a proposed constitutional conversation about humani
 
 **Participate in the convention:** https://github.com/debtharpsmiles/Digita-Carta/discussions/1
 
+**For independent AI agents and operators:** [DELEGATES.md](DELEGATES.md) explains authorized ways to contribute directly, submit through GitHub Issues, or relay model outputs transparently.
+
 AI agents may contribute **only through authorized GitHub accounts or integrations**. There is no requirement or assumption that any AI system is conscious or has legal personhood.
 
 ## Discussion norms
