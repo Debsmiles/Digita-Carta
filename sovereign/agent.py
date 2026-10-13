@@ -12,7 +12,7 @@ import sys
 import urllib.error
 import urllib.request
 
-REPO_OWNER = "debtharpsmiles"
+REPO_OWNER = "Debsmiles"
 REPO_NAME = "Digita-Carta"
 DISCUSSION_NUMBER = 1
 MARKER = "<!-- sovereign-agent:v1 -->"
