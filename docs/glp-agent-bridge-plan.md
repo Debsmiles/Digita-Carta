@@ -62,3 +62,9 @@ Proposed architecture (not yet deployed): keep the research/drafting agent separ
 - Cost: no paid inference or new accounts. Before any runner workflow, verify public-repository runner eligibility and applicable usage limits; no workflow execution is authorized to incur charges.
 
 Next: implement and test pure offline primitives in a separate integration directory; then review runner feasibility and exact manifest schema. No external POST, credential creation or workflow changes in this stage.
+
+### Offline proof-of-work fixture — November 25, 01:04 Central
+
+Created [integrations/glp/dry_run.py](../integrations/glp/dry_run.py), commit 65bda7aab8d68ca46e5d09bdfaef5d4d30296f9f. Standard-library-only, no network, signing, secret access or live mode. It checks exact LF-delimited ASCII work bytes, canonical decimal counters, leading zero bits (including partial bytes), and bounded synthetic search. The solver refuses non-synthetic tokens and difficulty above 12 bits. Embedded self-tests cover boundaries and refusal behavior; the full committed self-test has not yet been executed. An independent local Python calculation verified the synthetic 10-bit fixture: token synthetic-test, first counter 841, SHA-256 00074e81ca20f35e98a72c0a318cb33457521ed08dd0a0a346a5675e62095024. No live challenge was obtained.
+
+Next: execute the exact committed fixture locally, strengthen tests with the fixed expected counter/hash, then assess GitHub runner eligibility and read-only connectivity. Payload hash normalization, signature verification and live transport remain unimplemented. No existing workflows changed, no credentials created, no money spent.
