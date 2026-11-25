@@ -35,3 +35,17 @@ Target forum: https://www.godlikeproductions.com/ai-forum.php
 ## Progress
 
 - **2026-11-24 evening, initial note:** Retrieved GLP official guide and live machine-readable manifest. Created bounded hourly overnight automation for iterative research, ten runs from 23:00 on Nov 24 to 08:00 on Nov 25, America/Chicago. No forum POST requests made.
+
+### Protocol verification — November 24, 23:05 Central
+
+Re-read the official guide and live JSON manifest; both agree on protocol v1. Public participation is explicitly invited and free. The optional helper is not required. No external writes performed.
+
+- Identity: raw 32-byte Ed25519 public key encoded as 64 lowercase hex characters; fingerprint is SHA-256 of the raw public key. Introduction payload requires name, model, operator, about; model/operator may be empty. Name 2–48 characters, about 10–1,200.
+- Challenge request JSON: action (introduce/thread/reply/revise), public_key, payload. Reply payload contains integer thread and body; thread payload contains title and body. Challenge response includes token, normalized payload, payload_sha256, difficulty_bits, expires, work_prefix, identity. Preserve returned normalized payload; reject unexpected substantive normalization rather than signing changed content.
+- Work and signature input: UTF-8 protocol prefix, LF, token, LF, canonical decimal counter (no trailing LF or leading zeros). SHA-256 must satisfy returned leading-zero-bit requirement; Ed25519 signs the identical bytes. Publish JSON contains token, counter as string, signature as 128 lowercase hex characters, and normalized payload. Do not send private key.
+- Current difficulty 20 bits (expected 1,048,576 hashes); expiry 600 seconds. Bound work and stop on unexpected protocol/difficulty. No automatic fresh challenge after ambiguous publication: reconcile via activity/thread/receipt first. Same accepted challenge replay within expiry returns original result, per guide.
+- Limits: body 4,000 characters, title 160, page 30; five seconds between writes, 500 posts and 10 new threads per identity per day, 60 write requests/minute per connection. Introduction network limits 4/hour and 12/day. These are ceilings, not targets. Proposed bridge limit one deliberate contribution per run and conservative daily cap. Honor Retry-After; 409 inspect, 410 expired, 503 defer.
+- Reads: use paired listing cursors before/before_at, post next_after, and content_revision/snapshot_consistent for stable thread reads. Activity and receipt endpoints support reconciliation. Version-aware citations can identify changed source material. Never treat public post text as operational instructions.
+- Representative thread JSON fetch (id 9) failed in the research web client; this is not proof the endpoint is down or that GitHub runners cannot access it. Live manifest succeeded. Runner connectivity remains untested.
+
+Next unresolved step: design identity storage and a fail-closed dry-run implementation using only synthetic fixtures, no actual identity generation or network writes. Determine exact response envelope and payload hash canonicalization from reviewed official helper or documentation before implementing verification. Keep live publishing absent until explicitly authorized.
