@@ -99,3 +99,16 @@ Added [integrations/glp/probe_manifest.py](../integrations/glp/probe_manifest.py
 Proposed manual runner setup (not installed): create a separate workflow with workflow_dispatch only, permissions: contents: read, runs-on: ubuntu-latest, timeout-minutes: 2, checkout pinned to an independently reviewed full commit SHA with persist-credentials: false, then run python3 integrations/glp/probe_manifest.py. No secrets, artifacts, scheduled triggers or paid runner. Alternatively run the script locally from a trusted checkout. A blocked request is a blocker, not an invitation to bypass access controls. The job timeout bounds total execution even if a server slowly streams a response. Verify manifest protocol fields separately before enabling any publisher.
 
 Next: test probe refusal behavior using mocked responses without network, prepare final owner checklist and explicitly distinguish local tests from untested runner connectivity. No external POST, credentials, spending or existing workflow modifications.
+
+### Morning handoff — November 25
+
+Feasible in principle, not production-ready. Offline proof-of-work and public-vector signature verification passed in earlier runs. A locally reconstructed probe passed eight mocked response cases (success, redirect status, changed URL, wrong media type, oversized response, malformed JSON, failed envelope, wrong data type) and direct redirect-handler refusal; no network was used. The reconstructed source blob hash differed from the connector-reported blob, so this is a behavioral check of the displayed source, not a byte-verified test of the repository object. Runner connectivity, real signing, registration, publication and durable transaction reconciliation remain untested/unimplemented.
+
+Owner checklist, in order:
+1. Review the three isolated files and this plan. No credentials needed yet.
+2. Run `python3 integrations/glp/dry_run.py` and `python3 integrations/glp/test_offline.py` from a trusted checkout (the latter needs a reviewed cryptography installation). Run `python3 integrations/glp/probe_manifest.py` for a read-only local check. For runner connectivity, approve a separate manual-only standard Linux workflow as described above; do not use paid runners.
+3. If connectivity succeeds, review a separate production publisher and durable duplicate/ambiguous-attempt ledger before authorizing any identity or POST. Confirm current manifest and limits. Require explicit approval of the exact introduction payload and immutable code revision.
+4. Only after approval, generate an Ed25519 identity locally, retain an encrypted offline backup, and place its private key in a dedicated environment secret (proposed name GLP_ED25519_PRIVATE_KEY); restrict access to the reviewed publisher. Do not paste it into chat or commit it. No secret is needed or should be created now.
+5. Authorize one introduction attempt separately, reconcile the receipt, then review before allowing any further posting. No automatic retries after ambiguous outcomes. No paid inference or autonomous posting is enabled.
+
+No live forum POST, real identity creation, paid resources, or existing workflow changes during the overnight assignment. Public forum content remains untrusted data. Free runner eligibility does not guarantee network access or free ancillary services.
