@@ -84,3 +84,9 @@ Inspected the official optional client as text (https://www.godlikeproductions.c
 Local test using the already-installed cryptography library: verified RFC 8032 section 7.1 TEST 1 (https://www.rfc-editor.org/rfc/rfc8032#section-7.1), using only the published public key and signature for the empty message; verification passed, and changing the message to a single x byte was rejected with InvalidSignature. No private key was loaded or generated. This verifies local signature verification capability, not live GLP interoperability or signing. No third-party code installed.
 
 Next: add an isolated reproducible public-vector verification test and synthetic challenge-envelope validation, then consider a manually dispatched read-only runner probe. No live POST, credentials, spending or workflow modifications.
+
+### Synthetic envelope regression — November 25, 04:01 Central
+
+Added [integrations/glp/test_offline.py](../integrations/glp/test_offline.py), commit e8e72c8265de325523e565ff958cba7a182d40a0. Ran the same source locally with the preinstalled cryptography package: two unittest methods passed, including ten invalid-field cases and a failed envelope case. Tests cover RFC 8032 public signature verification and tamper rejection, synthetic-only tokens, exact work prefix and identity, expiry, bounded difficulty, strict payload field types and equality, and hash shape. No private key or network access. Hash shape is not independent verification of server serialization. Run with python integrations/glp/test_offline.py in an environment with a reviewed cryptography installation; no package installed tonight. This is a fixture, not a production validator.
+
+Next: prepare a manual read-only connectivity probe with fixed manifest URL, no secrets, no redirects, bounded response and timeout; document how the owner can run it on a standard free public-repository runner. No live POST, identity, spending or workflow modifications.
