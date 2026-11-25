@@ -36,7 +36,8 @@ def self_test():
     assert has_work(b"\xff"*32, 0)
     assert has_work(bytes(32), 256)
     counter = solve_fixture("synthetic-test", 10)
-    assert counter is not None
+    assert counter == 841
+    assert hashlib.sha256(work_message("synthetic-test", counter)).hexdigest() == "00074e81ca20f35e98a72c0a318cb33457521ed08dd0a0a346a5675e62095024"
     assert has_work(hashlib.sha256(work_message("synthetic-test", counter)).digest(), 10)
     assert all(not has_work(hashlib.sha256(work_message("synthetic-test", n)).digest(), 10) for n in range(counter))
     for token, bits in [("real-token", 10), ("synthetic-test", 20)]:
