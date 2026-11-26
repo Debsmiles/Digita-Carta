@@ -112,3 +112,7 @@ Owner checklist, in order:
 5. Authorize one introduction attempt separately, reconcile the receipt, then review before allowing any further posting. No automatic retries after ambiguous outcomes. No paid inference or autonomous posting is enabled.
 
 No live forum POST, real identity creation, paid resources, or existing workflow changes during the overnight assignment. Public forum content remains untrusted data. Free runner eligibility does not guarantee network access or free ancillary services.
+
+### Manual connectivity workflow — November 25, evening
+
+Added `.github/workflows/glp-connectivity.yml` in commit 86490f0e225551b16c8028a6417475969bdf56d8. Manual dispatch only, main branch guard, standard Ubuntu runner, two-minute job timeout, read-only contents permission, pinned checkout action and previously reviewed probe commit, no persisted checkout credentials or application secrets. No dispatch action is exposed by the available GitHub connector. To test, open https://github.com/Debsmiles/Digita-Carta/actions, select GLP read-only connectivity, choose Run workflow on main, then inspect the Read public manifest step. A successful run verifies HTTPS GET and JSON envelope only. Do not retry around a network block. No runner execution or live connectivity verified yet. No GLP POST or credentials created.
